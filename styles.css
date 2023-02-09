@@ -16,9 +16,18 @@ body{
     font-size: 20px;
 }
 
-.date{
+.date {
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 1.8rem;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    .date {
+        font-size: 1.4rem;
+        margin: 0 5px;
+    }
 }
 
 .datetime{
