@@ -85,6 +85,14 @@ form button:hover {
     border-radius: 2rem;
 }
 
+@media (max-width: 720px) {
+    .todo {
+      font-size: 2.5vmin;
+      padding-left: 0.2vw;
+      margin: 0.5vh 0.2vw;
+    }
+}
+
 .todo li {
     flex: 1;
 }

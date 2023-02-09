@@ -75,7 +75,7 @@ function filterTodo(e) {
                     todo.style.display = "none";
                 }
                 break;
-            case "incomplete":
+            case "incompleted":
                 if(!todo.classList.contains("completed")) {
                     todo.style.display = "flex";
                 } else {
@@ -92,8 +92,12 @@ function saveLocalTodos(todo) {
         todos = [];
     } else {
         todos = JSON.parse(localStorage.getItem("todos"));
-    }   
-    todos.push(todo);
+    }
+    const todoWithDate = {
+        text: todo,
+        date : date.value
+    }
+    todos.push(todoWithDate);
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 
@@ -108,9 +112,15 @@ function getLocalTodos() {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo");
         const newTodo = document.createElement("li");
-        newTodo.innerText = todo;
+        newTodo.textContent = todo.text;
+        console.log(newTodo.innerText);
         newTodo.classList.add("todo-item");
         todoDiv.appendChild(newTodo);
+
+        const dateTimeText = document.createElement("p");
+        dateTimeText.innerText = todo.date;
+        dateTimeText.classList.add("datetime");
+        todoDiv.appendChild(dateTimeText);
 
         const completedButton = document.createElement("button");
         completedButton.innerHTML = '<i class="fas fa-check-circle"></li>';
