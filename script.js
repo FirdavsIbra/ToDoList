@@ -26,6 +26,10 @@ function addTodo(event) {
           }, 0);
         return;
     }
+    if(!date.value) {
+        alert("Date was not added. Please try again!");
+        return;
+    }
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     saveLocalTodos(todoInput.value);
