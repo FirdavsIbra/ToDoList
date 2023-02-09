@@ -19,6 +19,13 @@ function addTodo(event) {
         alert("Text is empty. Please try again!");
         return;
     }
+    if(todoInput.value.length >= 45){
+        alert("Text lenght is long. Please try again!");
+        setTimeout(function() {
+            todoInput.value = "";
+          }, 0);
+        return;
+    }
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     saveLocalTodos(todoInput.value);

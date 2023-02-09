@@ -17,6 +17,7 @@ body{
 }
 
 .date {
+    color: #F56EB3;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 1.8rem;
@@ -32,6 +33,7 @@ body{
 
 .datetime{
     margin-right: 20px;
+    color: #F56EB3;
 }
 
 header, 
