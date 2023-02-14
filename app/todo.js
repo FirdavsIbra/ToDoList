@@ -1,8 +1,12 @@
-const todoInput = document.querySelector(".todo-input");
-const todoButton = document.querySelector(".todo-button");
-const todoList = document.querySelector(".todo-list");
-const filterOption = document.querySelector(".filter-todo");
-const date = document.querySelector(".date");
+import { domElements } from "./domElements.js";
+
+const {
+    todoInput,
+    todoButton,
+    todoList,
+    filterOption,
+    date
+} = domElements;
 
 document.addEventListener("DOMContentLoaded", getLocalTodos);
 todoButton.addEventListener("click", addTodo);
@@ -15,29 +19,7 @@ function addTodo(event) {
     todoDiv.classList.add("todo");
     const newTodo = document.createElement("li");
     newTodo.innerText = todoInput.value;
-    if(!todoInput.value){
-        alert("Text is empty. Please try again!");
-        return;
-    }
-    if(todoInput.value.length >= 45){
-        alert("Text lenght is long. Please try again!");
-        setTimeout(function() {
-            todoInput.value = "";
-          }, 0);
-        return;
-    }
-    var dateArray = date.value.split("-");
-    const today = new Date();
-
-    if (new Date(dateArray[0], dateArray[1]-1, dateArray[2]) < today) {
-        alert("Input date is earlier than today's date. Please try again!");
-        return;
-    }
-
-    if(!date.value) {
-        alert("Date was not added. Please try again!");
-        return;
-    }
+    
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     saveLocalTodos(todoInput.value);
@@ -103,13 +85,13 @@ function filterTodo(e) {
                 break;
         }
     });
-}
+}   
 
 function saveLocalTodos(todo) {
     let todos;
     if(localStorage.getItem("todos") === null) {
         todos = [];
-    } else {
+    }else {
         todos = JSON.parse(localStorage.getItem("todos"));
     }
     const todoWithDate = {
@@ -132,7 +114,7 @@ function getLocalTodos() {
         todoDiv.classList.add("todo");
         const newTodo = document.createElement("li");
         newTodo.textContent = todo.text;
-        console.log(newTodo.innerText);
+       
         newTodo.classList.add("todo-item");
         todoDiv.appendChild(newTodo);
 
