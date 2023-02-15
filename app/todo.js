@@ -8,6 +8,7 @@ const {
     date
 } = domElements;
 
+
 document.addEventListener("DOMContentLoaded", getLocalTodos);
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
@@ -22,7 +23,7 @@ function addTodo(event) {
     
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
-    saveLocalTodos(todoInput.value);
+    saveLocalTodos(todoInput.value, false);
 
     const dateTimeButton = document.createElement("p");
     dateTimeButton.innerText = date.value;
